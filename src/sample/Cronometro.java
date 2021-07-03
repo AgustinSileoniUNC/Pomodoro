@@ -9,14 +9,14 @@ public class Cronometro extends Thread{
     private boolean funcionando = false;
     private boolean state = false;
 
-    private Cronometro(int tiempo_min, Mostrador_Auxiliar mostrador_auxiliar){
-        this.tiempo_seg = tiempo_min*60;
+    private Cronometro(long tiempo_seg, Mostrador_Auxiliar mostrador_auxiliar){
+        this.tiempo_seg = tiempo_seg;
         this.mostrador_auxiliar = mostrador_auxiliar;
     }
 
-    public static Cronometro getInstance(int tiempo_min, Mostrador_Auxiliar mostrador_auxiliar){
+    public static Cronometro getInstance(long tiempo_seg, Mostrador_Auxiliar mostrador_auxiliar){
         if(Cronometro_==null){
-            Cronometro_ = new Cronometro(tiempo_min,mostrador_auxiliar);
+            Cronometro_ = new Cronometro(tiempo_seg,mostrador_auxiliar);
         }
         return Cronometro_;
     }
