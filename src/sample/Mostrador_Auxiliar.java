@@ -2,31 +2,27 @@ package sample;
 
 import javafx.scene.text.Text;
 
-public class Mostrador_Auxiliar extends Thread{
+public class Mostrador_Auxiliar{
     private static Mostrador_Auxiliar Mostrador_auxiliar_;
-    Cronometro cronometro;
-    Text timer;
-    private Mostrador_Auxiliar(Cronometro cronometro, Text timer){
-        this.cronometro= cronometro;
+    private Text timer;
+
+    private Mostrador_Auxiliar( Text timer){
         this.timer = timer;
     }
 
-    public static Mostrador_Auxiliar getInstance(Cronometro cronometro, Text timer){
-        if(Mostrador_auxiliar_==null){
-            Mostrador_auxiliar_ = new Mostrador_Auxiliar(cronometro,timer);
+    public static Mostrador_Auxiliar getInstance(Text timer){
+        if(Mostrador_auxiliar_ == null){
+            Mostrador_auxiliar_ = new Mostrador_Auxiliar(timer);
         }
         return Mostrador_auxiliar_;
     }
-    @Override
-    public void run() {
-        while (true) {
-            try {
-                Thread.sleep(1000);
-                timer.setText((int) cronometro.tiempoRestante()/60+":"+(int) cronometro.tiempoRestante()%60);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+
+    public void actualizar(int tiempoRestante){
+        timer.setText( tiempoRestante/60+":"+ tiempoRestante%60);
     }
+    public Text modificar(){
+        return timer;
+    }
+
 }
 
