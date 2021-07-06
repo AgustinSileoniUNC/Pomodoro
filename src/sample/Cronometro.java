@@ -1,8 +1,10 @@
 package sample;
 
+import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
 public class Cronometro extends Thread{
+
     private static Cronometro Cronometro_;
     private Mostrador_Auxiliar mostrador_auxiliar;
     private double tiempo_seg;
