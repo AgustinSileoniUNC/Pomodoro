@@ -3,22 +3,24 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
+
 public class Cronometro extends Thread{
 
     private static Cronometro Cronometro_;
-    private Mostrador_Auxiliar mostrador_auxiliar;
+    private Controller controller;
     private double tiempo_seg;
     private boolean funcionando = false;
     private boolean state = false;
 
-    private Cronometro(long tiempo_seg, Mostrador_Auxiliar mostrador_auxiliar){
+    private Cronometro(long tiempo_seg, Controller controller){
         this.tiempo_seg = tiempo_seg;
-        this.mostrador_auxiliar = mostrador_auxiliar;
+        this.controller = controller;
     }
 
-    public static Cronometro getInstance(long tiempo_seg, Mostrador_Auxiliar mostrador_auxiliar){
+    public static Cronometro getInstance(long tiempo_seg,Controller controller){
         if(Cronometro_==null){
-            Cronometro_ = new Cronometro(tiempo_seg,mostrador_auxiliar);
+            Cronometro_ = new Cronometro(tiempo_seg,controller);
         }
         return Cronometro_;
     }
@@ -32,7 +34,7 @@ public class Cronometro extends Thread{
                 Thread.sleep(1000);
                 if(state) {
                     tiempo_seg--;
-                    mostrador_auxiliar.actualizar((int) tiempo_seg);
+                    controller.actualizarTimer((int) tiempo_seg);
                 }
 
             } catch (InterruptedException e) {
@@ -49,6 +51,10 @@ public class Cronometro extends Thread{
 
     public boolean isFuncionando(){
         return funcionando;
+    }
+
+    public void setTiempo_seg(double time){
+        this.tiempo_seg = time;
     }
 
     public void changeState(){

@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,16 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CronometroTest {
     Text text;
-    Mostrador_Auxiliar mostrador_auxiliar ;
+    Button button;
+
     @BeforeEach
     void setUp() {
         text = new Text();
-        mostrador_auxiliar = Mostrador_Auxiliar.getInstance(text);
+        button = new Button();
     }
 
     @Test
     void getInstance() {
-        Cronometro cronometro = Cronometro.getInstance(1,mostrador_auxiliar);
+        Controller controller = new Controller();
+        Cronometro cronometro = Cronometro.getInstance(1,controller );
         cronometro.start();
         try {
             Thread.sleep(1200);

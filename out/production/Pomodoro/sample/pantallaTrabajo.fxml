@@ -11,7 +11,21 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <AnchorPane prefHeight="225.0" prefWidth="300.0" style="-fx-background-color: fcc69a;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <AnchorPane fx:id="head" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Text fx:id="title" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trabajo" textAlignment="CENTER" wrappingWidth="300.0">
+                    <font>
+                        <Font name="Dyuthi Regular" size="30.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent;" AnchorPane.topAnchor="50.0">
+            <cursor>
+                <Cursor fx:constant="DISAPPEAR" />
+            </cursor>
+        </AnchorPane>
+        <AnchorPane fx:id="body" prefHeight="225.0" prefWidth="300.0" style="-fx-background-color: fcc69a;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
                 <Text fx:id="timer" layoutY="76.0" stroke="#15b912" strokeType="OUTSIDE" strokeWidth="0.0" text="25:00" textAlignment="CENTER" wrappingWidth="300.0">
                     <font>
@@ -33,20 +47,6 @@
                </image>
             </ImageView>
             </children>
-        </AnchorPane>
-        <AnchorPane prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <Text layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trabajo" textAlignment="CENTER" wrappingWidth="300.0">
-                    <font>
-                        <Font name="Dyuthi Regular" size="30.0" />
-                    </font>
-                </Text>
-            </children>
-        </AnchorPane>
-        <AnchorPane prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent;" AnchorPane.topAnchor="50.0">
-            <cursor>
-                <Cursor fx:constant="DISAPPEAR" />
-            </cursor>
         </AnchorPane>
     </children>
 </AnchorPane>

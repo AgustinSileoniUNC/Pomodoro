@@ -13,7 +13,7 @@
     <children>
         <AnchorPane prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: green;" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Text fx:id="title" fill="#0d0017" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descanso" textAlignment="CENTER" wrappingWidth="300.0">
+                <Text fx:id="titleBreak" fill="#0d0017" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descanso" textAlignment="CENTER" wrappingWidth="300.0">
                     <font>
                         <Font name="Dyuthi Regular" size="30.0" />
                     </font>
@@ -27,7 +27,7 @@
         </AnchorPane>
         <AnchorPane prefHeight="225.0" prefWidth="300.0" style="-fx-background-color: #72da87;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <Text fx:id="timer" layoutY="76.0" stroke="#065e03" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" textAlignment="CENTER" wrappingWidth="300.0">
+                <Text fx:id="timerBreak" layoutY="76.0" stroke="#065e03" strokeType="OUTSIDE" strokeWidth="0.0" text="5:00" textAlignment="CENTER" wrappingWidth="300.0">
                     <font>
                         <Font name="Cantarell Thin" size="78.0" />
                     </font>
@@ -35,7 +35,7 @@
                         <GaussianBlur />
                     </effect>
                 </Text>
-                <Button fx:id="button" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#iniciarPomodoro" opacity="0.75" style="-fx-font-family: Dyuthi; -fx-background-color: green; -fx-border-color: 710000;" text="INICIAR" textFill="#01430e" textOverrun="CENTER_WORD_ELLIPSIS" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="115.0">
+                <Button fx:id="buttonBreak" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#iniciarPomodoro" opacity="0.75" style="-fx-font-family: Dyuthi; -fx-background-color: green; -fx-border-color: 710000; -fx-font-size: 25;" text="INICIAR" textFill="#01430e" textOverrun="CENTER_WORD_ELLIPSIS" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="115.0">
                <font>
                   <Font size="25.0" />
                </font></Button>
