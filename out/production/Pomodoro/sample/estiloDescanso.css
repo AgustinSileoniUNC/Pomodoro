@@ -1,0 +1,22 @@
+#head{
+    -fx-background-color: green;
+}
+#title{
+    -fx-font-family: "Dyuthi";
+    -fx-text-fill: black;
+}
+#head{
+    -fx-background-color: green;
+}
+#body{
+    -fx-background-color: #c6fc9a;
+}
+#timer{
+    -fx-fill: black;
+}
+Button {
+    -fx-background-color: #079600;
+    -fx-text-fill: #073900;
+    -fx-font-family: Dyuthi;
+    -fx-font-size: 25;
+}

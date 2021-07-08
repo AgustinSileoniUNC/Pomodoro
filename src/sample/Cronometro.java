@@ -43,6 +43,12 @@ public class Cronometro extends Thread{
         }
         state = false;
         funcionando = false;
+        if(tiempoRestante()==0 && controller.getIsModoTrabajo()){
+            controller.setTextButton("DESCANSAR");
+        }
+        else if(tiempoRestante()==0 && !controller.getIsModoTrabajo()){
+            controller.setTextButton("TRABAJAR");
+        }
     }
 
     public double tiempoRestante(){
@@ -58,6 +64,12 @@ public class Cronometro extends Thread{
     }
 
     public void changeState(){
+        if(state){
+            controller.setTextButton("INICIAR");
+        }
+        else {
+            controller.setTextButton("PAUSAR");
+        }
         state = !state;
     }
 }

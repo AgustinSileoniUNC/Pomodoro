@@ -1,5 +1,7 @@
 package sample;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.css.StyleClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,6 +17,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,13 +26,18 @@ public class Controller implements Initializable {
     @FXML private Text timer;
     @FXML private Text title;
     @FXML private Button button;
+    @FXML private AnchorPane conteiner;
     @FXML private AnchorPane body;
     @FXML private AnchorPane head;
     private boolean isModoTrabajo = true;
     private Cronometro cronometro;
+    private int tiempoTrabajo=25;
+    private int tiempoDescansoCorto=5;
+    private int tiempoDescansoLargo=15;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+      //  conteiner.getStylesheets().clear();
     }
 
 
@@ -52,7 +60,7 @@ public class Controller implements Initializable {
     }
 
     //Carga la ventana de trabajo
-    private void goWorkScreen(MouseEvent event) throws IOException {
+    public void goWorkScreen(MouseEvent event) throws IOException {
         Parent workScreen = FXMLLoader.load(getClass().getResource("pantallaTrabajo.fxml"));
         Scene  workScreenScene= new Scene(workScreen) ;
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -72,22 +80,16 @@ public class Controller implements Initializable {
     //Describe el comportamiento al clickear el boton con el cronometro en cero
     private void endTimer(MouseEvent event) throws IOException {
         if(isModoTrabajo){
-            cronometro.setTiempo_seg(5*60);
-            button.setText("DESCANSAR");
-            title.setText("Descanso");
-            head.setStyle("-fx-background-color: green");
-            title.setStyle("-fx-fill: black ");
-            body.setStyle("-fx-background-color:  #5cc57e");
-            timer.setStyle("-fx-fill: black ");
-            button.setStyle("-fx-background-color: #3f884c ");
-           // button.setStyle("-fx-text-fill: #38753d");
-           // button.setStyle("-fx-font-size: 25");
-
+            cronometro.setTiempo_seg(tiempoDescansoCorto*60);
+            vistaModoDescanso();
         }
         else if(!isModoTrabajo){
-            cronometro.setTiempo_seg(25*60);
-            goWorkScreen(event);
+            cronometro.setTiempo_seg(tiempoTrabajo*60);
+            vistaModoTrabajo();
         }
+        Thread t2 = new Thread(cronometro);
+        t2.start();
+
     }
 
     //Cierra el programa
@@ -96,16 +98,23 @@ public class Controller implements Initializable {
     }
 
     public void setTextButton(String string){
-        button.setText(string);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                button.setText(string);
+            }
+        });
     }
 
     //Inicia el cronometro si no lo está ya, y en ese caso cambia su estado
     public void iniciarPomodoro(MouseEvent evento) throws IOException {
-        cronometro = Cronometro.getInstance(5,this);
+        cronometro = Cronometro.getInstance(tiempoTrabajo*60,this);
         if(cronometro.isFuncionando()){
                 cronometro.changeState();
+                System.out.println("Cambio de Estado");
         }
-        else if(!cronometro.isFuncionando()&&cronometro.tiempoRestante()==0){
+        else if(!cronometro.isFuncionando() && cronometro.tiempoRestante()==0){
+            System.out.println("Cambio endTimer");
             endTimer(evento);
             isModoTrabajo= !isModoTrabajo;
         }
@@ -116,22 +125,48 @@ public class Controller implements Initializable {
 
     //Logica privada del metodo iniciarPomodoro
     private void modoTrabajo(){
-        System.out.println("Trabajo");
-        if(!cronometro.isFuncionando()){
-            timer.setEffect(new javafx.scene.effect.Glow());
-            Thread h1 = new Thread(cronometro);
-            h1.start();
-            System.out.println("Corriendo");
-        }
+        timer.setEffect(new javafx.scene.effect.Glow());
+        Thread h1 = new Thread(cronometro);
+        h1.start();
         button.setText("PAUSAR");
-        if(cronometro.tiempoRestante() ==0){
-            button.setText("Descansar");
-        }
     }
 
     public void actualizarTimer(int tiempoRestante){
         System.out.println(""+(int) tiempoRestante);
-        timer.setText( tiempoRestante/60+":"+ tiempoRestante%60);
+        timer.setText( String.format("%02d"+":"+"%02d",tiempoRestante/60,tiempoRestante%60));
+    }
+
+    public boolean getIsModoTrabajo(){
+        return isModoTrabajo;
+    }
+
+    private void vistaModoDescanso(){
+        button.setText("PAUSAR");
+        title.setText("Descanso");
+        head.setStyle("-fx-background-color: green");
+        title.setStyle("-fx-fill: black ");
+        body.setStyle("-fx-background-color:  #c6fc9a");
+        timer.setStyle("-fx-fill: black ");
+        button.setStyle("-fx-background-color: #55ea6c ");
+        button.setStyle("-fx-text-fill: #073900");
+        button.setStyle("-fx-font-family:  Dyuthi");
+        conteiner.getStylesheets().clear();
+        conteiner.getStylesheets().addAll("file:/home/agustin/IdeaProjects/Pomodoro/src/sample/estiloDescanso.css");
+
+    }
+
+    private void vistaModoTrabajo(){
+        button.setText("PAUSAR");
+        title.setText("Trabajo");
+        head.setStyle("-fx-background-color: red");
+        title.setStyle("-fx-fill: black ");
+        body.setStyle("-fx-background-color:  #fcc69a");
+        timer.setStyle("-fx-fill: black ");
+        button.setStyle("-fx-background-color: #da0000 ");
+        button.setStyle("-fx-text-fill: #640000");
+        button.setStyle("-fx-font-family:  Dyuthi");
+        conteiner.getStylesheets().clear();
+        conteiner.getStylesheets().addAll("file:/home/agustin/IdeaProjects/Pomodoro/src/sample/estiloTrabajo.css");
     }
 
 }

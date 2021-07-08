@@ -1,0 +1,30 @@
+.head{
+    -fx-background-color: blue;
+}
+
+#title{
+    -fx-font-family: "Dyuthi";
+    -fx-text-fill: black;
+}
+#head{
+    -fx-background-color: red;
+}
+#body{
+    -fx-background-color: #c6fc9a;
+}
+#timer{
+    -fx-fill: black;
+}
+AnchorPane{
+    -fx-background-color: blue;
+}
+Text{
+    -fx-fill:black ;
+}
+Button {
+    -fx-background-color: #960700;
+    -fx-text-fill: #390700;
+    -fx-font-family: Dyuthi;
+    -fx-font-size: 35;
+}
+
