@@ -263,11 +263,11 @@ Luego:
 
    En el primer punto pudimos ver como se almacenan los datos en esta estructura, por lo que utilizando este conocimiento los separaremos según el tipo de dato que almacenan para poder entenderlos más fácilmente. 
 
-   ### char → a x = $1_{dec}$ = $01_{hex}$
+   ### char → a x = 1<sub>dec</sub> = 01<sub>hex</sub>
 
    byte 00 : 0x01 
 
-   ### char → b = $3_{dec}$ = $03_{hex}$
+   ### char → b = 3<sub>dec</sub> = 03<sub>hex</sub>
 
    byte 01 : 0x03 
 
@@ -277,7 +277,7 @@ Luego:
 
    byte 03 : 0x00 
 
-   ### int → x = $15_{dec}$ = $0000000f_{hex}$
+   ### int → x = 15<sub>dec</sub>= 0000000f<sub>hex</sub>
 
    byte 04 : 0x0f
 
@@ -287,13 +287,13 @@ Luego:
 
    byte 07 : 0x00
 
-   ### unsigned short int → y = $65535_{dec}$ = $ffff_{hex}$
+   ### unsigned short int → y = 65535<sub>dec</sub> = ffff<sub>hex</sub>
 
    byte 08 : 0xff
 
    byte 09 : 0xff
 
-   ### char → c = $128_{dec}$ = $80_{hex}$
+   ### char → c = 128<sub>dec</sub> = 80<sub>hex</sub>
 
    byte 10 : 0x80
 
@@ -301,21 +301,21 @@ Luego:
 
    byte 11 : 0xbb
 
-   ### unsigned short in → z = $-1_{dec}$  = $65535_{dec\_unsigned}$ = $ffff_{hex}$
+   ### unsigned short in → z = -1<sub>dec</sub>  = 65535<sub>dec_unsigned</sub> = ffff<sub>hex</sub>
 
    byte 12 : 0xff
 
    byte 13 : 0xff
 
-   ### char (Array) → d[0] = $1_{dec}$ = $01_{hex}$
+   ### char (Array) → d[0] = 1<sub>dec</sub> = 01<sub>hex</sub>
 
    byte 14 : 0x01
 
-   ### char (Array) → d[1] = $1_{dec}$ = $01_{hex}$
+   ### char (Array) → d[1] = 1<sub>dec</sub> = 01<sub>hex</sub>
 
    byte 15 : 0x01
 
-   ### char (Array) → d[2] = $1_{dec}$ = $01_{hex}$
+   ### char (Array) → d[2] = 1<sub>dec</sub> = 01<sub>hex</sub>
 
    byte 16 : 0x01
 
