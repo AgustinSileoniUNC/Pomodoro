@@ -42,7 +42,7 @@ Luego:
 
    Para poder explicar a que se deben los tamaños de cada una de las estructuras tenemos en cuenta 3 cosas, el tipo de dato que almacena, el orden en que lo hace y si se está o no usando padding.
 
-   Padding : Cuando se añaden bytes de memoria vacios entre los datos almacenados para alinear la información en memoria y que está sea de más simple acceso para el sistema.
+   > Padding : Cuando se añaden bytes de memoria vacios entre los datos almacenados para alinear la información en memoria y que está sea de más simple acceso para el sistema.
 
    ### Tamaño de los disintos tipos de datos utilizados en estas estructuras.
 
@@ -58,155 +58,99 @@ Luego:
 
    ### Orden de las estructuras
 
-   BaseData
+   <details><summary>BaseData</summary>
 
-   - 4 bytes
-  
-      char
-  
-      char
-  
-      null
-  
-      null
+   - 4 bytes  
+   
+     char | char | null | null
 
    - 8 bytes
   
-      int
-  
-      int
-  
-      int
-  
-      int
-
+      int | int | int | int
   
    - 12 bytes
   
-      unsigned short int
-  
-      unsigned short int
-  
-      char
-  
-      null
-
+      unsigned short int | unsigned short int | char | null
   
   - 16 bytes
   
-      unsigned short int
-  
-      unsigned short int
-  
-      char (Pointer)
-  
-      char (Pointer)
+      unsigned short int | unsigned short int | char (Array) | char (Array)
 
    - 20 bytes
   
-      char (Pointer)
-  
-      char (Pointer)
-  
-      null
-  
-      null
+      char (Array) | null | null | null
+    </details>
 
-   ReorderData
+   <details><summary>ReorderData</summary>
 
    - 4 bytes
-      char
-      char
-      null
-      null
+   
+      char | char | null | null
 
    - 8 bytes
-      int
-      int
-      int
-      int
-
+   
+      int | int | int | int
+   
    - 12 bytes
-      unsgined short
-      unsigned short
-      unsigned short
-      unsigned short
+   
+      unsgined short | unsigned short | unsigned short |unsigned short
 
-   - 16 bytes
-      char
-      char
-      char
-      char
+   - 16 bytes      
+ 
+      char | char (Array) | char (Array) | char (Array)
+     </details>       
 
-   Comparando esta estructura con la anterior podemos como ver que a pesar de tener la misma cantidad y tipo de datos, el hecho de haberlos ordenado de tal forma que el padding sea mínimo nos permite ocupar menos espacio en memoria.
+   > Comparando esta estructura con la anterior podemos como ver que a pesar de tener la misma cantidad y tipo de datos, el hecho de haberlos ordenado de tal forma que el padding sea mínimo nos permite ocupar menos espacio en memoria.
 
-   ExtendedData
+   <details><summary>ExtendedData</summary>
 
    - 4 bytes
-      long unsigned int
-      long unsigned int
-      long unsigned int
-      long unsigned int
 
+      long unsigned int | long unsigned int | long unsigned int | long unsigned int
+   
    - 8 bytes
-      long unsigned int
-      long unsigned int
-      long unsigned int
-      long unsigned int
-
+      
+      long unsigned int | long unsigned int | long unsigned int | long unsigned int
+   
    - 12 bytes
-      char
-      char
-      unsigned short int
-      unsigned short int
+   
+      char | char | unsigned short int | unsigned short int
 
    - 16 bytes
-      int
-      int
-      int
-      int
+   
+      int | int | int | int
 
    - 20 bytes
-      unsigned short int
-      unsigned short int
-      unsigned short int
-      unsigned short int
+
+      unsgined short | unsigned short | unsigned short |unsigned short
 
    - 24 bytes
-      char
-      char (Array)
-      char (Array)
-      char (Array)
+   
+      char | char (Array) | char (Array) | char (Array)
+   </details>
+       
+   > Aquí se agregó un dato, por lo que ocupa bastante más espacio en memoria pero es muy eficiente ya que se acomoda de tal forma que no se necesita ningún padding.
 
-   Aquí se agregó un dato, por lo que ocupa bastante más espacio en memoria pero es muy eficiente ya que se acomoda de tal forma que no se necesita ningún padding.
-
-   BaseDataPacked
+   <details><summary>BaseDataPacked</summary>
 
    - 4 bytes
-      char
-      char
-      int
-      int
+
+      char | char | int | int
 
    - 8 bytes
-      int
-      int
-      unsigned short int
-      unsigned short int
+
+      int | int | unsigned short int | unsigned short int
 
    - 12 bytes
-      char
-      unsgined short int
-      unsigned short int
-      char (Array)
+   
+      char | unsigned short int | unsigned short int | char (Array)
 
    - 14 bytes
-      char (Array)
-      char (Array)
-      empty
-      empty
-
-   Al definir la estructura BaseDataPacked con el atributo Packed lo que sucede es que no se añaden los espacios vacíos Padding, como se explicó al prinicipio. Si no que en cambio un dato se almacena a continuación de otro aunque quede cortado. Algo que se ve claramente pasa con el dato int.
+   
+      char (Array) | char (Array) | 
+      </details>
+   
+   > Al definir la estructura BaseDataPacked con el atributo Packed lo que sucede es que no se añaden los espacios vacíos Padding, como se explicó al prinicipio. Si no que en cambio un dato se almacena a continuación de otro aunque quede cortado. Algo que se ve claramente pasa con el dato int.
 </details>
    
 <details><summary> Explique por que la expresion que calcula limit y limit_aux generan el mismo resultado.</summary>
@@ -271,7 +215,7 @@ Luego:
 
    byte 01 : 0x03 
 
-   ### padding padding → valor indefinido
+   ### padding → valor indefinido
 
    byte 02 : 0x00 
 
